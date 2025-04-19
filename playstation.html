@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaySwap - PlayStation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 22px;
+            height: 44px;
+        }
+        
+        .nav-left {
+            justify-self: start;
+        }
+        
+        .nav-center {
+            justify-self: center;
+        }
+        
+        .nav-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+        
+        .nav-right a {
+            text-decoration: none;
+            color: #1d1d1f;
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 10px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .product-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card > a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-card .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-close" id="sideMenuClose">&times;</div>
+        <div class="side-menu-items">
+            <a href="index2.html" class="side-menu-item">Home</a>
+            <a href="playstation.html" class="side-menu-item">PlayStation</a>
+            <a href="accessori.html" class="side-menu-item">Accessori</a>
+            <a href="giochi.html" class="side-menu-item">Giochi</a>
+            <a href="index2.html#sell" class="side-menu-item">Vendi</a>
+            <a href="index2.html#how-it-works" class="side-menu-item">Come funziona</a>
+            <a href="#" class="side-menu-item">Contatti</a>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="menu-toggle" id="menuToggle">☰</div>
+            </div>
+            <div class="nav-center">
+                <a href="index2.html" class="logo">PlaySwap</a>
+            </div>
+            <div class="nav-right">
+                <a href="login.html">Accedi</a>
+                <div class="cart-icon">
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">PlayStation</h2>
+        <div class="product-grid">
+            <!-- PS5 Slim Standard -->
+            <div class="product-card">
+                <a href="product.html?id=1&title=PlayStation%205%20Slim%20Standard%20Edition&price=€399,00&image=https://media.direct.playstation.com/is/image/psdglobal/PS5-Slim-Hero-4?$Background_Large$&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://media.direct.playstation.com/is/image/psdglobal/PS5-Slim-Hero-4?$Background_Large$" alt="PlayStation 5 Slim Standard Edition">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 5 Slim Standard Edition</h3>
+                    <p class="product-price">€399,00</p>
+                    <a href="product.html?id=1&title=PlayStation%205%20Slim%20Standard%20Edition&price=€399,00&image=https://media.direct.playstation.com/is/image/psdglobal/PS5-Slim-Hero-4?$Background_Large$&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS5 Standard (Fat) -->
+            <div class="product-card">
+                <a href="product.html?id=2&title=PlayStation%205%20Standard%20Edition%20(Fat)&price=€369,00&image=https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_.jpg&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_.jpg" alt="PlayStation 5 Standard Edition (Fat)">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 5 Standard Edition (Fat)</h3>
+                    <p class="product-price">€369,00</p>
+                    <a href="product.html?id=2&title=PlayStation%205%20Standard%20Edition%20(Fat)&price=€369,00&image=https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_.jpg&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS5 Slim Digital -->
+            <div class="product-card">
+                <a href="product.html?id=3&title=PlayStation%205%20Slim%20Digital%20Edition&price=€330,00&image=https://media.direct.playstation.com/is/image/psdglobal/PS5-astro-Slim-Digital-console-ds-Hero-5?$Background_Large$&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://media.direct.playstation.com/is/image/psdglobal/PS5-astro-Slim-Digital-console-ds-Hero-5?$Background_Large$" alt="PlayStation 5 Slim Digital Edition">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 5 Slim Digital Edition</h3>
+                    <p class="product-price">€330,00</p>
+                    <a href="product.html?id=3&title=PlayStation%205%20Slim%20Digital%20Edition&price=€330,00&image=https://media.direct.playstation.com/is/image/psdglobal/PS5-astro-Slim-Digital-console-ds-Hero-5?$Background_Large$&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS5 Digital (Fat) -->
+            <div class="product-card">
+                <a href="product.html?id=4&title=PlayStation%205%20Digital%20Edition%20(Fat)&price=€299,00&image=https://m.media-amazon.com/images/I/5183aMmrVdL._AC_SL1344_.jpg&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/5183aMmrVdL._AC_SL1344_.jpg" alt="PlayStation 5 Digital Edition (Fat)">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 5 Digital Edition (Fat)</h3>
+                    <p class="product-price">€299,00</p>
+                    <a href="product.html?id=4&title=PlayStation%205%20Digital%20Edition%20(Fat)&price=€299,00&image=https://m.media-amazon.com/images/I/5183aMmrVdL._AC_SL1344_.jpg&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS4 Pro -->
+            <div class="product-card">
+                <a href="product.html?id=5&title=PlayStation%204%20Pro&price=€189,00&image=https://m.media-amazon.com/images/I/71TSxRq3EHL._AC_SL1500_.jpg&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71TSxRq3EHL._AC_SL1500_.jpg" alt="PlayStation 4 Pro">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 4 Pro</h3>
+                    <p class="product-price">€189,00</p>
+                    <a href="product.html?id=5&title=PlayStation%204%20Pro&price=€189,00&image=https://m.media-amazon.com/images/I/71TSxRq3EHL._AC_SL1500_.jpg&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS4 Slim -->
+            <div class="product-card">
+                <a href="product.html?id=6&title=PlayStation%204%20Slim&price=€139,00&image=https://gmedia.playstation.com/is/image/SIEPDC/ps4-slim-image-block-01-en-24jul20&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps4-slim-image-block-01-en-24jul20" alt="PlayStation 4 Slim">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 4 Slim</h3>
+                    <p class="product-price">€139,00</p>
+                    <a href="product.html?id=6&title=PlayStation%204%20Slim&price=€139,00&image=https://gmedia.playstation.com/is/image/SIEPDC/ps4-slim-image-block-01-en-24jul20&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- PS4 Fat -->
+            <div class="product-card">
+                <a href="product.html?id=7&title=PlayStation%204%20Fat&price=€99,00&image=https://m.media-amazon.com/images/I/41gN9izXLbL._AC_SL1500_.jpg&condition=Ottime%20-%20Come%20nuova" class="product-card-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/41gN9izXLbL._AC_SL1500_.jpg" alt="PlayStation 4 Fat">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Ottime - Come nuova</div>
+                    <h3 class="product-title">PlayStation 4 Fat</h3>
+                    <p class="product-price">€99,00</p>
+                    <a href="product.html?id=7&title=PlayStation%204%20Fat&price=€99,00&image=https://m.media-amazon.com/images/I/41gN9izXLbL._AC_SL1500_.jpg&condition=Ottime%20-%20Come%20nuova" class="btn">Acquista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            const sideMenuClose = document.getElementById('sideMenuClose');
+
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeSideMenu() {
+                sideMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            sideMenuClose.addEventListener('click', closeSideMenu);
+            overlay.addEventListener('click', closeSideMenu);
+
+            // Aggiorna il contatore del carrello
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let count = 0;
+                cart.forEach(item => {
+                    count += item.quantity || 1;
+                });
+                document.querySelector('.cart-count').textContent = count;
+            }
+
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

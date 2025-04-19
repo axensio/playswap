@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaySwap - Giochi</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 22px;
+            height: 44px;
+        }
+        
+        .nav-left {
+            justify-self: start;
+        }
+        
+        .nav-center {
+            justify-self: center;
+        }
+        
+        .nav-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+        
+        .nav-right a {
+            text-decoration: none;
+            color: #1d1d1f;
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 10px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* Aggiungi questi stili per le card cliccabili */
+        .product-card {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-close" id="sideMenuClose">&times;</div>
+        <div class="side-menu-items">
+            <a href="index2.html" class="side-menu-item">Home</a>
+            <a href="playstation.html" class="side-menu-item">PlayStation</a>
+            <a href="accessori.html" class="side-menu-item">Accessori</a>
+            <a href="giochi.html" class="side-menu-item">Giochi</a>
+            <a href="index2.html#sell" class="side-menu-item">Vendi</a>
+            <a href="index2.html#how-it-works" class="side-menu-item">Come funziona</a>
+            <a href="#" class="side-menu-item">Contatti</a>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="menu-toggle" id="menuToggle">☰</div>
+            </div>
+            <div class="nav-center">
+                <a href="index2.html" class="logo">PlaySwap</a>
+            </div>
+            <div class="nav-right">
+                <a href="login.html">Accedi</a>
+                <div class="cart-icon">
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Giochi</h2>
+        <div class="product-grid">
+            <!-- Spider-Man 2 -->
+            <div class="product-card">
+                <a href="product.html?id=5&title=Marvel's%20Spider-Man%202&price=€49,99&image=https://m.media-amazon.com/images/I/81qBiCSoegL._AC_SL1500_.jpg&condition=Come%20nuovo" class="product-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81qBiCSoegL._AC_SL1500_.jpg" alt="Spider-Man 2">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Come nuovo</div>
+                    <h3 class="product-title">Marvel's Spider-Man 2</h3>
+                    <p class="product-price">€49,99</p>
+                    <a href="product.html?id=5&title=Marvel's%20Spider-Man%202&price=€49,99&image=https://m.media-amazon.com/images/I/81qBiCSoegL._AC_SL1500_.jpg&condition=Come%20nuovo" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- God of War Ragnarök -->
+            <div class="product-card">
+                <a href="product.html?id=6&title=God%20of%20War%20Ragnarök&price=€44,99&image=https://m.media-amazon.com/images/I/613lyxBIXoL._AC_SL1000_.jpg&condition=Come%20nuovo" class="product-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/613lyxBIXoL._AC_SL1000_.jpg" alt="God of War Ragnarök">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Come nuovo</div>
+                    <h3 class="product-title">God of War Ragnarök</h3>
+                    <p class="product-price">€44,99</p>
+                    <a href="product.html?id=6&title=God%20of%20War%20Ragnarök&price=€44,99&image=https://m.media-amazon.com/images/I/613lyxBIXoL._AC_SL1000_.jpg&condition=Come%20nuovo" class="btn">Acquista</a>
+                </div>
+            </div>
+
+            <!-- Horizon Forbidden West -->
+            <div class="product-card">
+                <a href="product.html?id=7&title=Horizon%20Forbidden%20West&price=€39,99&image=https://m.media-amazon.com/images/I/81AKuApmWIL._AC_SL1500_.jpg&condition=Come%20nuovo" class="product-link"></a>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81AKuApmWIL._AC_SL1500_.jpg" alt="Horizon Forbidden West">
+                </div>
+                <div class="product-info">
+                    <div class="product-condition">Come nuovo</div>
+                    <h3 class="product-title">Horizon Forbidden West</h3>
+                    <p class="product-price">€39,99</p>
+                    <a href="product.html?id=7&title=Horizon%20Forbidden%20West&price=€39,99&image=https://m.media-amazon.com/images/I/81AKuApmWIL._AC_SL1500_.jpg&condition=Come%20nuovo" class="btn">Acquista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            const sideMenuClose = document.getElementById('sideMenuClose');
+
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeSideMenu() {
+                sideMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            sideMenuClose.addEventListener('click', closeSideMenu);
+            overlay.addEventListener('click', closeSideMenu);
+
+            // Aggiorna il contatore del carrello
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let count = 0;
+                cart.forEach(item => {
+                    count += item.quantity || 1;
+                });
+                document.querySelector('.cart-count').textContent = count;
+            }
+
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

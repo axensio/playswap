@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaySwap - Dettaglio Prodotto</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1d1d1f;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: #0066cc;
+            transform: translateY(-1px);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0066cc;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .cart-icon {
+            position: relative;
+            margin-left: 20px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 60px 0;
+            gap: 40px;
+        }
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-gallery img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .product-gallery:hover img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+        .product-condition {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: rgba(29, 29, 31, 0.1);
+            color: #1d1d1f;
+            border-radius: 980px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .product-price {
+            font-size: 36px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+        }
+        .product-description {
+            color: #86868b;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 22px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary {
+            background-color: #1d1d1f;
+            color: #ffffff;
+        }
+        .btn-secondary:hover {
+            background-color: #444444;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #1d1d1f;
+            color: #1d1d1f;
+        }
+        .btn-outline:hover {
+            background-color: #1d1d1f;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .product-specs {
+            margin-top: 40px;
+        }
+        .specs-title {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+        .specs-list {
+            list-style: none;
+        }
+        .specs-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        .spec-name {
+            color: #86868b;
+        }
+        .spec-value {
+            font-weight: 500;
+        }
+        .success-message {
+            display: none;
+            background-color: #34c759;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+            }
+            .product-gallery {
+                padding: 20px;
+            }
+            .product-title {
+                font-size: 28px;
+            }
+            .product-price {
+                font-size: 30px;
+            }
+        }
+        /* Stili per le opzioni del prodotto */
+        .product-options {
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .option-group {
+            margin-bottom: 15px;
+        }
+        
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+        
+        .option-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background-color: white;
+            font-size: 15px;
+            color: #1d1d1f;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%231d1d1f' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            transition: all 0.3s ease;
+        }
+        
+        .option-group select:hover {
+            border-color: #86868b;
+        }
+        
+        .option-group select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+        
+        /* Aggiorna gli stili dei tag di condizione */
+        .condition-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: rgba(0, 102, 204, 0.1);
+            color: #0066cc;
+            border-radius: 980px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .condition-tag.nuovo {
+            background-color: rgba(52, 199, 89, 0.1);
+            color: #34c759;
+        }
+        
+        .condition-tag.ottime {
+            background-color: rgba(0, 102, 204, 0.1);
+            color: #0066cc;
+        }
+        
+        /* Aggiorna gli stili del prezzo per maggiore enfasi */
+        .product-price {
+            font-size: 40px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 15px 0 25px;
+            letter-spacing: -0.02em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index2.html" class="logo">PlaySwap</a>
+                <ul class="nav-links">
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="index2.html#products">Prodotti</a></li>
+                    <li><a href="index2.html#sell">Vendi</a></li>
+                    <li><a href="index2.html#how-it-works">Come funziona</a></li>
+                    <li><a href="#">Contatti</a></li>
+                    <li><a href="#" id="profile-link">Accedi</a></li>
+                    <li class="cart-icon">
+                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="success-message" class="success-message">
+            <i class="fas fa-check-circle"></i> Prodotto aggiunto al carrello con successo!
+        </div>
+        
+        <div class="product-container">
+            <div class="product-gallery">
+                <img id="product-image" src="" alt="Product Image">
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title" id="product-title"></h1>
+                <div class="condition-tag" id="product-condition"></div>
+                <p class="product-price" id="product-price"></p>
+                
+                <!-- Product Options (for DualSense) -->
+                <div id="product-options" class="product-options" style="display: none;">
+                    <div class="option-group">
+                        <label for="condition">Condizione:</label>
+                        <select id="condition" onchange="updateProductDetails()">
+                            <option value="nuovo">Nuovo - €79,99</option>
+                            <option value="ottime">Ottime Condizioni - €59,99</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="color">Colore:</label>
+                        <select id="color" onchange="updateProductDetails()">
+                            <option value="white" data-image="https://m.media-amazon.com/images/I/418ZL-WW1EL._AC_SL1000_.jpg">Bianco (Originale)</option>
+                            <option value="black" data-image="https://m.media-amazon.com/images/I/61O9tWR6WDS._AC_SL1500_.jpg">Midnight Black</option>
+                            <option value="red" data-image="https://m.media-amazon.com/images/I/61av8vRdgeL._AC_SL1500_.jpg">Volcanic Red</option>
+                            <option value="purple" data-image="https://m.media-amazon.com/images/I/51uz99WpVeL._AC_SL1200_.jpg">Galactic Purple</option>
+                            <option value="blue" data-image="https://m.media-amazon.com/images/I/61Oij54SgkL._AC_SL1500_.jpg">Starlight Blue</option>
+                            <option value="cobalt-blue" data-image="https://m.media-amazon.com/images/I/61nQGukkRFL._AC_SL1500_.jpg">Cobalt Blue</option>
+                            <option value="silver" data-image="https://m.media-amazon.com/images/I/61tBzoz6c0L._AC_SL1500_.jpg">Sterling Silver</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="product-description" id="product-description">
+                    <!-- La descrizione verrà aggiornata dinamicamente -->
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="buy-now">Acquista ora</button>
+                    <button class="btn btn-secondary" id="add-to-cart">Aggiungi al carrello</button>
+                    <button class="btn btn-outline" id="save-for-later">Salva per dopo</button>
+                </div>
+                
+                <div class="product-specs">
+                    <h3 class="specs-title">Specifiche</h3>
+                    <ul class="specs-list" id="specs-list">
+                        <!-- Le specifiche verranno aggiornate dinamicamente -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Controlla se l'utente è loggato
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const profileLink = document.getElementById('profile-link');
+            
+            if (isLoggedIn) {
+                profileLink.textContent = 'Il tuo profilo';
+                profileLink.href = 'dashboard.html';
+            } else {
+                profileLink.textContent = 'Accedi';
+                profileLink.href = 'login.html';
+            }
+            
+            // Ottieni i parametri dall'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productTitle = urlParams.get('title');
+            const productPrice = urlParams.get('price');
+            const productImage = urlParams.get('image');
+            const productCondition = urlParams.get('condition');
+            
+            // Inizializza i dettagli del prodotto
+            initializeProductDetails(productId, productTitle, productPrice, productImage, productCondition);
+            
+            // Event listeners per i pulsanti
+            document.getElementById('add-to-cart').addEventListener('click', handleAddToCart);
+            document.getElementById('buy-now').addEventListener('click', handleBuyNow);
+            document.getElementById('save-for-later').addEventListener('click', handleSaveForLater);
+        });
+        
+        function initializeProductDetails(productId, title, price, image, condition) {
+            // Imposta i dettagli base del prodotto
+            document.getElementById('product-title').textContent = title || 'Prodotto';
+            document.getElementById('product-price').textContent = price || '€0,00';
+            document.getElementById('product-image').src = image || '';
+            document.getElementById('product-condition').textContent = condition || '';
+            
+            // Gestisci le opzioni specifiche per il DualSense (ID: 8)
+            if (productId === '8') {
+                const productOptions = document.getElementById('product-options');
+                productOptions.style.display = 'block';
+                
+                // Imposta la descrizione per il DualSense
+                document.getElementById('product-description').innerHTML = `
+                    <p>Controller wireless DualSense™ per PS5™ con feedback aptico immersivo, 
+                    grilletti adattivi dinamici e microfono integrato.</p>
+                `;
+                
+                // Imposta le specifiche per il DualSense
+                document.getElementById('specs-list').innerHTML = `
+                    <li>
+                        <span class="spec-name">Garanzia</span>
+                        <span class="spec-value">24 mesi</span>
+                    </li>
+                    <li>
+                        <span class="spec-name">Connettività</span>
+                        <span class="spec-value">Wireless, USB-C</span>
+                    </li>
+                    <li>
+                        <span class="spec-name">Batteria</span>
+                        <span class="spec-value">Ricaricabile integrata</span>
+                    </li>
+                    <li>
+                        <span class="spec-name">Compatibilità</span>
+                        <span class="spec-value">PS5, PC</span>
+                    </li>
+                `;
+                
+                // Imposta i valori iniziali delle opzioni
+                const conditionSelect = document.getElementById('condition');
+                conditionSelect.value = condition?.toLowerCase().includes('nuovo') ? 'nuovo' : 'ottime';
+                
+                // Aggiorna i dettagli in base alle opzioni selezionate
+                updateProductDetails();
+            } else {
+                // Per altri prodotti, mostra una descrizione generica
+                document.getElementById('product-description').innerHTML = `
+                    <p>Questo prodotto è stato accuratamente controllato dai nostri tecnici specializzati. 
+                    Viene fornito con garanzia di 12 mesi.</p>
+                `;
+                
+                // Specifiche generiche per altri prodotti
+                document.getElementById('specs-list').innerHTML = `
+                    <li>
+                        <span class="spec-name">Condizione</span>
+                        <span class="spec-value">${condition || 'Non specificata'}</span>
+                    </li>
+                    <li>
+                        <span class="spec-name">Garanzia</span>
+                        <span class="spec-value">12 mesi</span>
+                    </li>
+                    <li>
+                        <span class="spec-name">Spedizione</span>
+                        <span class="spec-value">Gratuita</span>
+                    </li>
+                `;
+            }
+        }
+        
+        function updateProductDetails() {
+            const productOptions = document.getElementById('product-options');
+            if (productOptions.style.display === 'none') return;
+            
+            const condition = document.getElementById('condition').value;
+            const colorSelect = document.getElementById('color');
+            const selectedColor = colorSelect.options[colorSelect.selectedIndex];
+            
+            // Aggiorna prezzo e condizione
+            const price = condition === 'nuovo' ? '€79,99' : '€59,99';
+            const conditionText = condition === 'nuovo' ? 'Nuovo' : 'Ottime Condizioni';
+            
+            document.getElementById('product-price').textContent = price;
+            const conditionTag = document.getElementById('product-condition');
+            conditionTag.textContent = conditionText;
+            conditionTag.className = 'condition-tag ' + condition;
+            document.getElementById('product-image').src = selectedColor.dataset.image;
+        }
+        
+        function handleAddToCart() {
+            const product = getProductDetails();
+            addToCart(product);
+            showSuccessMessage('Prodotto aggiunto al carrello con successo!');
+        }
+        
+        function handleBuyNow() {
+            const product = getProductDetails();
+            addToCart(product);
+            window.location.href = 'cart.html';
+        }
+        
+        function handleSaveForLater() {
+            const product = getProductDetails();
+            saveForLater(product);
+            showSuccessMessage('Prodotto salvato per dopo!');
+        }
+        
+        function getProductDetails() {
+            const productOptions = document.getElementById('product-options');
+            const hasOptions = productOptions.style.display !== 'none';
+            
+            return {
+                id: new URLSearchParams(window.location.search).get('id') || '1',
+                title: document.getElementById('product-title').textContent,
+                price: document.getElementById('product-price').textContent,
+                image: document.getElementById('product-image').src,
+                condition: document.getElementById('product-condition').textContent,
+                color: hasOptions ? document.getElementById('color').options[document.getElementById('color').selectedIndex].text : null,
+                quantity: 1
+            };
+        }
+        
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Cerca un prodotto esistente con le stesse opzioni
+            const existingProductIndex = cart.findIndex(item => 
+                item.id === product.id && 
+                item.condition === product.condition && 
+                item.color === product.color
+            );
+            
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        
+        function saveForLater(product) {
+            let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+            
+            // Cerca un prodotto esistente con le stesse opzioni
+            const existingProductIndex = savedItems.findIndex(item => 
+                item.id === product.id && 
+                item.condition === product.condition && 
+                item.color === product.color
+            );
+            
+            if (existingProductIndex === -1) {
+                savedItems.push(product);
+                localStorage.setItem('savedItems', JSON.stringify(savedItems));
+            }
+        }
+        
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+    </script>
+</body>
+</html>

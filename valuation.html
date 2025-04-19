@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valutazione PlayStation - PlaySwap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .valuation-card {
+            background-color: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin: 20px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        h1 {
+            color: #1d1d1f;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .price {
+            font-size: 56px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 30px 0;
+            letter-spacing: -0.005em;
+            position: relative;
+            display: inline-block;
+        }
+        .price::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #0066cc;
+            border-radius: 3px;
+        }
+        .details {
+            margin-bottom: 30px;
+            color: #86868b;
+            font-size: 17px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background-color: #1d1d1f;
+            color: white;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 17px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background-color: #444444;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .ps-image {
+            width: 200px;
+            margin: 0 auto 30px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: #1d1d1f;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="index2.html#sell" class="back-btn">← Indietro</a>
+    <div class="valuation-card">
+        <div class="logo">PlaySwap</div>
+        <h1>Valutazione della tua PlayStation</h1>
+        <div id="content">
+            <!-- Content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const model = urlParams.get('model');
+            const condition = urlParams.get('condition');
+            const modelText = urlParams.get('modelText');
+            const conditionText = urlParams.get('conditionText');
+            const value = urlParams.get('value');
+
+            if (!model || !condition || !value) {
+                document.getElementById('content').innerHTML = `
+                    <p style="color: #86868b;">Nessuna valutazione disponibile. Torna alla pagina principale per ottenere una valutazione.</p>
+                    <a href="index2.html#sell" class="btn" style="margin-top: 20px;">Torna indietro</a>
+                `;
+                return;
+            }
+
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <img src="https://gmedia.playstation.com/is/image/SIEPDC/${model.includes('ps5') ? 'ps5-slim-horizontal-product-shot-01-en-07sep23' : 'ps4-pro-console-01-en-26oct18'}" class="ps-image" alt="PlayStation">
+                <div class="details">
+                    <p>Modello: ${decodeURIComponent(modelText)}</p>
+                    <p>Condizioni: ${decodeURIComponent(conditionText)}</p>
+                </div>
+                <div class="price">€${value}</div>
+                <p>Contattaci per completare la vendita!</p>
+                <a href="#" class="btn" target="_self">Contattaci</a>
+            `;
+        });
+    </script>
+</body>
+</html> 
